@@ -2,22 +2,16 @@ const nodemailer = require('nodemailer');
 
 const createTransporter = () => {
   return nodemailer.createTransport({
-    // Using the built-in service shortcut bypasses direct port firewall limits
     service: 'gmail',
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      // Keep certificate restrictions loose for cloud network environments
       rejectUnauthorized: false
     }
   });
 };
-
-// Leave the rest of your file exactly as it is...
-
-// Keep everything below this line (sendInquiryEmails, etc.) exactly the same...;
 
 const sendInquiryEmails = async (inquiryData) => {
   const transporter = createTransporter();
@@ -37,7 +31,7 @@ const sendInquiryEmails = async (inquiryData) => {
           <tr><td style="padding: 10px; font-weight: bold;">Company:</td><td style="padding: 10px;">${companyName}</td></tr>
           <tr style="background-color: #f8fafc;"><td style="padding: 10px; font-weight: bold;">Phone Number:</td><td style="padding: 10px;">${phone}</td></tr>
           <tr><td style="padding: 10px; font-weight: bold;">Email Address:</td><td style="padding: 10px;">${email}</td></tr>
-          <tr style="background-color: #f8fafc;"><td style="padding: 10px; font-weight: bold;">Required Service:</td><td style="padding: 10px; font-weight: #2563eb;"><strong>${requirement}</strong></td></tr>
+          <tr style="background-color: #f8fafc;"><td style="padding: 10px; font-weight: bold;">Required Service:</td><td style="padding: 10px;"><strong>${requirement}</strong></td></tr>
         </table>
         <div style="background-color: #f1f5f9; padding: 16px; border-radius: 6px; border-left: 4px solid #1e3a8a;">
           <h4 style="margin: 0 0 8px 0; color: #0f172a;">Message / Technical Specs:</h4>

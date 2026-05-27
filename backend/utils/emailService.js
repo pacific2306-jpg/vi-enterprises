@@ -199,7 +199,7 @@ const sendInquiryEmails = async (inquiryData) => {
   await axios.post('https://api.brevo.com/v3/smtp/email', brevoData, {
     headers: {
       'accept': 'application/json',
-      'api-key': process.env.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,
+      'api-key': process.env.BREVO_API_KEY,
       'content-type': 'application/json'
     }
   });

@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: vi-enterprises-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5001
+      - key: MONGO_URI
+        value: mongodb+srv://pratham:VIenterprises2026@cluster0.romzbqc.mongodb.net/vienterprises?retryWrites=true&w=majority
+      - key: COMPANY_EMAIL
+        value: pacific2306@gmail.com
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_USER
+        value: pacific2306@gmail.com
+      - key: SMTP_PASS
+        value: ocee ospe mezl hlce
+      - key: FRONTEND_URL
+        value: '*'

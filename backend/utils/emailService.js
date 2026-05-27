@@ -2,15 +2,21 @@ const nodemailer = require('nodemailer');
 
 const createTransporter = () => {
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: false, // true for 465, false for other ports
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
+    port: 465, // Explicitly switch to SSL Port for secure cloud connections
+    secure: true, // Must be true when running on port 465
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    // This blocks cloud network providers from rejecting the connection handshake
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 };
+
+// Keep everything below this line (sendInquiryEmails, etc.) exactly the same...;
 
 const sendInquiryEmails = async (inquiryData) => {
   const transporter = createTransporter();

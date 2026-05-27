@@ -2,21 +2,20 @@ const nodemailer = require('nodemailer');
 
 const createTransporter = () => {
   return nodemailer.createTransport({
-    // Direct Google IPv4 SMTP address forces it to bypass Render's broken IPv6 routing
-    host: '74.125.142.108', 
-    port: 465,
-    secure: true, // Keep SSL active
+    // Using the built-in service shortcut bypasses direct port firewall limits
+    service: 'gmail',
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: false,
-      // Explicitly tells the connection to favor IPv4 architecture
-      servername: 'smtp.gmail.com' 
+      // Keep certificate restrictions loose for cloud network environments
+      rejectUnauthorized: false
     }
   });
 };
+
+// Leave the rest of your file exactly as it is...
 
 // Keep everything below this line (sendInquiryEmails, etc.) exactly the same...;
 

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // Hardcoding the address temporarily forces the browser to look exactly at your running backend
-  baseURL: 'http://localhost:5001/api/v1',
+  // This automatically reads your clean cloud variable path!
+  baseURL: import.meta.env.VITE_API_URL || "https://vi-enterprises-backend.onrender.com/api/v1",
   headers: {
     'Content-Type': 'application/json',
   },

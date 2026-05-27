@@ -107,7 +107,7 @@ const sendInquiryEmails = async (inquiryData) => {
   // 2. Premium Auto-Response Template for the Customer
   const customerMailOptions = {
     from: 'VI Enterprises <onboarding@resend.dev>',
-    to: email,
+    to: "prathamkhode06@gmail.com",
     subject: `Thank you for contacting VI Enterprises — Surface Finishing Experts`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; border-top: 4px solid #1e3a8a; padding: 32px; color: #334155; line-height: 1.6;">

@@ -2,16 +2,18 @@ const nodemailer = require('nodemailer');
 
 const createTransporter = () => {
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: 465, // Explicitly switch to SSL Port for secure cloud connections
-    secure: true, // Must be true when running on port 465
+    // Direct Google IPv4 SMTP address forces it to bypass Render's broken IPv6 routing
+    host: '74.125.142.108', 
+    port: 465,
+    secure: true, // Keep SSL active
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
-    // This blocks cloud network providers from rejecting the connection handshake
     tls: {
-      rejectUnauthorized: false
+      rejectUnauthorized: false,
+      // Explicitly tells the connection to favor IPv4 architecture
+      servername: 'smtp.gmail.com' 
     }
   });
 };
